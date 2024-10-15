@@ -1,5 +1,5 @@
 import "./App.css";
-import { Container, Row, Badge } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import Header from "./components/Header";
 import CardItem from "./components/CardItem";
@@ -13,6 +13,7 @@ import menu1 from "./image/menu1.jpg";
 import menu2 from "./image/menu2.jpg";
 import menu3 from "./image/menu3.jpg";
 import menu4 from "./image/menu4.jpg";
+import Login from "./components/Login";
 
 function App() {
   const [show, setShow] = useState(false);
@@ -21,6 +22,10 @@ function App() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleCloseLogin = () => setShowLogin(false);
+  const handleShowLogin = () => setShowLogin(true);
   // Thêm sản phẩm vào giỏ hàng
   const addToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
@@ -52,7 +57,9 @@ function App() {
   return (
     <div className="container-fluid bg-dark text-white">
       <Container>
+        <Login showLogin={showLogin} showClose={handleCloseLogin}></Login>
         <Header
+          handleShowLogin={handleShowLogin}
           handleShow={handleShow}
           totalItems={cart.reduce((acc, item) => acc + item.quantity, 0)}
         />
