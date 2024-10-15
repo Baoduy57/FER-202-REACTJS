@@ -33,6 +33,10 @@ const Header = (props) => {
             <Button variant="primary" onClick={props.handleShow}>
               Cart <Badge bg="secondary">{props.totalItems}</Badge>
             </Button>
+            <Button variant="success" onClick={props.handleShowLogin}>
+              Login <Badge bg="secondary"></Badge>
+              <span className="visually-hidden">unread messages</span>
+            </Button>
           </Navbar.Collapse>
         </Container>
       </Navbar>
